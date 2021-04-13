@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        applicationId "com.example.food_app"
+        minSdkVersion 23
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'com.facebook.android:facebook-login:[8.1)'
+    implementation "androidx.browser:browser:1.3.0"
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-auth'
+    implementation platform('com.google.firebase:firebase-bom:27.0.0')
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'com.google.firebase:firebase-auth:20.0.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    // Facebook SDK Core only (Analytics)
+    compile 'com.facebook.android:facebook-core:5.+'
+    // Facebook Login only
+    compile 'com.facebook.android:facebook-login:5.+'
+    // Facebook Share only
+    compile 'com.facebook.android:facebook-share:5.+'
+    // Facebook Places only
+    compile 'com.facebook.android:facebook-places:5.+'
+    // Facbeook Messenger only
+    compile 'com.facebook.android:facebook-messenger:4.+'
+    // Facebook App Links only
+    compile 'com.facebook.android:facebook-applinks:5.+'
+    // Facebook Android SDK (everything)
+    compile 'com.facebook.android:facebook-android-sdk:5.+'
+    // Audience Network SDK.
+    compile 'com.facebook.android:audience-network-sdk:5.+'
+    // Account Kit
+    compile 'com.facebook.android:account-kit-sdk:5.+'
+}
