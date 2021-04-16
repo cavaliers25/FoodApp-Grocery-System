@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">Food_app</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="retype_password">Retype Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="get_location">Get Location</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="save_address">Save Address</string>
+    <string name="already_have_an_account_login">Already have an account? Login</string>
+    <string name="sign_up">Sign Up</string>
     <string name="facebook_app_id">119526343500673</string>
     <string name="fb_login_protocol_scheme">fb119526343500673</string>
+
 
 </resources>

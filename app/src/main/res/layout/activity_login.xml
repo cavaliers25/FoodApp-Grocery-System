@@ -31,7 +31,7 @@
         android:layout_marginLeft="15dp"
         android:layout_below="@+id/login"
         android:layout_marginTop="60dp"
-        android:hint="Phone Number/Email"
+        android:hint="Phone Number"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:inputType="number"

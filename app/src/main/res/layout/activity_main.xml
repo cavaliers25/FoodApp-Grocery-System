@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     tools:menu="@menu/main_menu"
-    android:background="@drawable/cafe">
+    android:background="@drawable/login1">
     <ImageView
         android:layout_width="300dp"
         android:layout_height="100dp"
@@ -32,33 +32,52 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/buttons"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/main_id_btn"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="20dp"
-        android:textSize="18sp"
+        android:background="@drawable/buttons"
+        android:padding="10dp"
+        android:text="Already have an Account? Login"
         android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:text="Already have an account? Login"/>
+        android:textSize="15sp"
+        android:id="@+id/main_id_btn" />
 
     <Button
+        android:id="@+id/sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/input_design"
-        android:id="@+id/sign_up"
         android:layout_above="@+id/main_id_btn"
+        android:layout_marginLeft="250dp"
+        android:layout_marginRight="40dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:padding="20dp"
-        android:textSize="18sp"
+        android:background="@drawable/buttons"
+        android:padding="15dp"
+        android:text="@string/sign_up"
         android:textAllCaps="false"
-        android:textColor="@color/white"
-        android:text="Sign Up"/>
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
+    <com.google.android.gms.common.SignInButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/google_Signup"
+        android:layout_above="@+id/sign_up"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="10dp"/>
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/main_id_btn"
+        android:layout_marginBottom="20dp"
+        android:drawablePadding="4dp"
+        android:layout_below="@+id/google_Signup"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="175dp"
+        android:gravity="center" />
 
 </RelativeLayout>
