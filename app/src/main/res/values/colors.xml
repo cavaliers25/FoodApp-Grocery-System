@@ -8,4 +8,12 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="pink">#E91E63</color>
+    <color name="colorPrimary">#4CAF50</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#536DFE</color>
+    <color name="colorTextPrimary">#212121</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorSemiDark">#400000</color>
+    <color name="colorRemaining">#757575</color>
 </resources>

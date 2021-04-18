@@ -12,6 +12,20 @@
     <string name="sign_up">Sign Up</string>
     <string name="facebook_app_id">119526343500673</string>
     <string name="fb_login_protocol_scheme">fb119526343500673</string>
+    <string name="track_order">Track Order</string>
+    <string name="cancel">CANCEL</string>
+    <string name="order_number">order number</string>
+    <string name="estimated_time">Estimated Time</string>
+    <string name="_30_minutes">30 minutes</string>
+    <string name="order_number_value">order number value</string>
+    <string name="order_confirmed">Order Confirmed</string>
+    <string name="your_order_is_ready_for_pickup">Your order is ready for pickup</string>
+    <string name="ready_to_pickup">Ready to Pickup</string>
+    <string name="we_are_preparing_your_order">We are preparing your order</string>
+    <string name="order_processed">Order Processed</string>
+    <string name="your_order_has_been_confirmed">Your order has been confirmed</string>
+    <string name="we_have_received_your_order">We have received your order</string>
+    <string name="order_placed">Order Placed</string>
 
 
 </resources>
