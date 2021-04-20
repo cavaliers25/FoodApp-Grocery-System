@@ -2,18 +2,34 @@ package com.example.food_app;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,14 +39,16 @@ import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class social_sitesLogin extends AppCompatActivity {
 
     private Button getLocation, join;
     private EditText username, number, password, retype_password;
     private ProgressDialog loadingBar;
-
+    private Spinner select_user;
 
 
     @Override
@@ -45,8 +63,33 @@ public class social_sitesLogin extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         retype_password = (EditText) findViewById(R.id.retype_password);
         loadingBar = new ProgressDialog(this);
-        GoogleMap locate = new GoogleMap();
-        String current_Location = locate.current_location;
+        select_user = findViewById(R.id.select_user);
+
+
+        List<String> user = new ArrayList<>();
+        user.add("Select the kind of user");
+        user.add("Customer");
+        user.add("Retailer");
+        user.add("Wholesaler");
+
+        ArrayAdapter<String> userAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, user);
+        userAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        select_user.setAdapter(userAdapter);
+
+        select_user.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String user_select = select_user.getSelectedItem().toString();
+                if(! user_select.equals("Select the kind of user")){
+                    Toast.makeText(social_sitesLogin.this, "You are a "+ user_select, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         getLocation.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +113,7 @@ public class social_sitesLogin extends AppCompatActivity {
         String phone = number.getText().toString();
         String pass = password.getText().toString();
         String re_pass = retype_password.getText().toString();
+        String user_select = select_user.getSelectedItem().toString();
 
 
         if(TextUtils.isEmpty(name)){
@@ -93,11 +137,11 @@ public class social_sitesLogin extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            validatePhoneNumber(name, phone, pass);
+            validatePhoneNumber(name, phone, pass, user_select);
         }
     }
 
-    private void validatePhoneNumber(String name, String phone, String pass) {
+    private void validatePhoneNumber(String name, String phone, String pass, String user_select) {
         final DatabaseReference rootRef;
         rootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -109,6 +153,7 @@ public class social_sitesLogin extends AppCompatActivity {
                     userdataMap.put("Username", name);
                     userdataMap.put("Phone Number", phone);
                     userdataMap.put("Password", pass);
+                    userdataMap.put("User", user_select);
 
                     rootRef.child("Users").child(phone).updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -143,7 +188,6 @@ public class social_sitesLogin extends AppCompatActivity {
 
             }
         });
-
-
     }
+
 }

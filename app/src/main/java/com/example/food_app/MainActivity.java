@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
@@ -37,8 +38,14 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG1 = "FacebookAuthentication";
     private FirebaseAuth.AuthStateListener authStateListener;
     private AccessTokenTracker accessTokenTracker;
+    DatabaseReference reff;
+    public TextView user;
 
 
     @Override
@@ -64,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         signUp = findViewById(R.id.sign_up);
         login = findViewById(R.id.main_id_btn);
+        user = findViewById(R.id.kindOfUser);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,18 +117,45 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG1, "onSuccess"+ loginResult);
                 handleFacebookToken(loginResult.getAccessToken());
-                Intent intent = new Intent(MainActivity.this, dashboard.class);
+                Intent intent = new Intent(MainActivity.this, popwindow.class);
                 startActivity(intent);
-                FirebaseDatabase.getInstance().getReference("Facebook SignUp")
-                        .setValue(loginResult.getAccessToken().getUserId()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                String fb_id = loginResult.getAccessToken().getUserId();
+//                FirebaseDatabase.getInstance().getReference("Facebook SignUp")
+//                        .setValue(loginResult.getAccessToken().getUserId()).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
+//                        }
+//                        else{
+//                            Toast.makeText( MainActivity.this, "Your account is not created due to some error", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
+
+                DatabaseReference rootRef;
+                rootRef = FirebaseDatabase.getInstance().getReference();
+
+                rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(!(dataSnapshot.child("Facebook_Users").child(fb_id).exists())){
+                            HashMap<String, Object> userdataMap = new HashMap<>();
+                            userdataMap.put("Id", fb_id);
+
+                            rootRef.child("Facebook_Users").child(fb_id).updateChildren(userdataMap)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+
+                                        }
+                                    });
                         }
-                        else{
-                            Toast.makeText( MainActivity.this, "Your account is not created due to some error", Toast.LENGTH_SHORT).show();
-                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
                 mFirebaseAuth.signOut();
@@ -183,8 +220,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateUI_fb(FirebaseUser user) {
-        if(user != null) {
-        }
+
     }
 
     @Override
@@ -237,10 +273,9 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(MainActivity.this, "Successful", Toast.LENGTH_SHORT).show();
-                    FirebaseUser user = mAuth.getCurrentUser();
-                    updateUI(user);
-                    Intent intent = new Intent(MainActivity.this, dashboard.class);
-                    startActivity(intent);
+                    FirebaseUser user1 = mAuth.getCurrentUser();
+                    updateUI(user1);
+
                 }
                 else {
                     Toast.makeText(MainActivity.this, "Failed", Toast.LENGTH_SHORT).show();
@@ -260,18 +295,63 @@ public class MainActivity extends AppCompatActivity {
             String personId = account.getId();
             Uri personPhoto = account.getPhotoUrl();
 
-            FirebaseDatabase.getInstance().getReference("Gmail SignUp")
-                    .setValue(personEmail + " " + personName).addOnCompleteListener(new OnCompleteListener<Void>() {
+//            FirebaseDatabase.getInstance().getReference("Gmail SignUp")
+//                    .setValue(personEmail + " " + personName).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                @Override
+//                public void onComplete(@NonNull Task<Void> task) {
+//                    if(task.isSuccessful()){
+//                        Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
+//                    }
+//                    else{
+//                        Toast.makeText( MainActivity.this, "Your account is not created due to some error", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+
+            DatabaseReference rootRef;
+            rootRef = FirebaseDatabase.getInstance().getReference();
+
+            rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(MainActivity.this, "Logged in", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText( MainActivity.this, "Your account is not created due to some error", Toast.LENGTH_SHORT).show();
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(!(dataSnapshot.child("Gmail_Users").child(personName).exists())){
+                        HashMap<String, Object> userdataMap = new HashMap<>();
+                        userdataMap.put("Name", personName);
+                        userdataMap.put("Gmail id", personEmail);
+
+
+                        rootRef.child("Gmail_Users").child(personName).updateChildren(userdataMap)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                    }
+                                });
                     }
                 }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
             });
+            reff = FirebaseDatabase.getInstance().getReference().child("Gmail_Users").child(personName);
+            reff.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                    String user_kind = datasnapshot.child("Name").getValue().toString();
+                    user.setText(user_kind);
+                    Intent intent = new Intent(MainActivity.this, popwindow.class);
+                    intent.putExtra("username", user.getText().toString());
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
             Toast.makeText(MainActivity.this, personName + " "+ personEmail, Toast.LENGTH_SHORT).show();
             mGoogleSignInClient.signOut();
         }

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="60dp"
         android:background="@drawable/buttons"
         android:padding="20dp"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/register"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/input_design"
         android:hint="@string/username"
@@ -39,7 +39,7 @@
         android:id="@+id/number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
+        android:layout_below="@+id/select_user"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="15dp"
@@ -108,6 +108,16 @@
         android:textAlignment="center"
         android:textSize="20sp" />
 
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/select_user"
+        android:background="@drawable/input_design"
+        android:padding="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/username"
+        android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"/>
 
 
 </RelativeLayout>

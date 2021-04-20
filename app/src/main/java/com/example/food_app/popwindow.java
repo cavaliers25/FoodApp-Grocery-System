@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
 public class popwindow extends AppCompatActivity {
     private Spinner select_user;
     private Button join;
+    public TextView username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,10 @@ public class popwindow extends AppCompatActivity {
         getWindow().setAttributes(params);
 
         select_user = findViewById(R.id.select_user);
+        username = findViewById(R.id.username);
+        username.setText(String.format(
+                "%s", getIntent().getStringExtra("username")
+        ));
 
 
         List<String> user = new ArrayList<>();
@@ -64,6 +70,7 @@ public class popwindow extends AppCompatActivity {
                         public void onClick(View v) {
                             if (user_select.compareTo("Customer")==0){
                                 Intent intent = new Intent(popwindow.this, Customer.class);
+                                intent.putExtra("username", username.getText().toString());
                                 startActivity(intent);
                             }
                             else if (user_select.compareTo("Retailer")==0){

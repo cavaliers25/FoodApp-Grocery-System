@@ -33,7 +33,6 @@ public class GoogleMap extends AppCompatActivity {
 
     FusedLocationProviderClient client;
     SupportMapFragment mapFragment;
-    String current_location;
     EditText edttxt_lat;
     EditText edttxt_long;
     Button btn;
@@ -49,7 +48,6 @@ public class GoogleMap extends AppCompatActivity {
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
-
         client = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(GoogleMap.this,
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -63,21 +61,6 @@ public class GoogleMap extends AppCompatActivity {
         edttxt_long = (EditText) findViewById(R.id.edttxt_long);
         btn = (Button) findViewById(R.id.btn);
 
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                try {
-//                    lat = edttxt_lat.getText().toString().trim();
-//                    lang = edttxt_long.getText().toString().trim();
-//                    Intent intent = new Intent(GoogleMap.this,social_sitesLogin.class);
-//                    intent.putExtra("Latitude", lat);
-//                    intent.putExtra("Longitude", lang);
-//                    startActivity(intent);
-//                } catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//            }
-//        });
     }
 
 

@@ -19,6 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_app"
         android:usesCleartextTraffic="true">
+        <activity android:name=".home"></activity>
+        <activity
+            android:name=".Customer"
+            android:label="@string/title_activity_customer"
+            android:theme="@style/Theme.Food_app.NoActionBar" />
+        <activity android:name=".Retailer" />
+        <activity android:name=".popwindow" />
+        <activity android:name=".AddNewProduct" />
+        <activity android:name=".WholeSaler" />
         <activity android:name=".GoogleMap" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -47,8 +56,9 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
 
 </manifest>

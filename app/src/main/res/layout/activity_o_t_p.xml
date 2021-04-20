@@ -171,10 +171,17 @@
             android:visibility="gone"
             android:layout_marginTop="500dp"/>
     </FrameLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/enternumber"
+        android:visibility="invisible"/>
 
-
-
-
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/enternumber"
+        android:id="@+id/user"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

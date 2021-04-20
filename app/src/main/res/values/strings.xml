@@ -26,6 +26,19 @@
     <string name="your_order_has_been_confirmed">Your order has been confirmed</string>
     <string name="we_have_received_your_order">We have received your order</string>
     <string name="order_placed">Order Placed</string>
+    <string name="title_activity_customer">Customer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="categories">Categories</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
 
 
 </resources>

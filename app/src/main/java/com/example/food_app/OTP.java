@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,6 +25,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +43,9 @@ public class OTP extends AppCompatActivity {
     private Button submit;
     String getOtpBackend;
     private ProgressBar progressBar1;
+    public TextView enternumber;
+    public TextView user;
+    DatabaseReference reff;
 
 
     @Override
@@ -49,13 +58,20 @@ public class OTP extends AppCompatActivity {
         inputnum4 = findViewById(R.id.inputotp4);
         inputnum5 = findViewById(R.id.inputotp5);
         inputnum6 = findViewById(R.id.inputotp6);
-        EditText enternumber = findViewById(R.id.phone_number);
+        enternumber = findViewById(R.id.enternumber);
+        user = findViewById(R.id.user);
+
 
         submit = findViewById(R.id.submit);
         getOtpBackend = getIntent().getStringExtra("backendotp");
 
         progressBar1 = findViewById(R.id.progressbar);
-
+        enternumber.setText(String.format(
+                "%s", getIntent().getStringExtra("mobile")
+        ));
+        user.setText(String.format(
+                "%s", getIntent().getStringExtra("user_kind")
+        ));
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,10 +238,27 @@ public class OTP extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        String user_kind = user.getText().toString();
                         if(task.isSuccessful()){
-                            Intent intent = new Intent(getApplicationContext(), dashboard.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
+
+                            if (user_kind.compareTo("Customer")==0){
+                                Intent intent = new Intent(getApplicationContext(), Customer.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.putExtra("mobile", enternumber.getText().toString());
+                                startActivity(intent);
+                            }
+                            else if (user_kind.compareTo("Retailer")==0){
+                                Intent intent = new Intent(getApplicationContext(), Retailer.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                            }
+                            else if (user_kind.compareTo("Wholesaler")==0){
+                                Intent intent = new Intent(getApplicationContext(), WholeSaler.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                            }
+
+
                         }
                         else{
                             Toast.makeText(OTP.this, "Enter the correct otp", Toast.LENGTH_SHORT).show();
