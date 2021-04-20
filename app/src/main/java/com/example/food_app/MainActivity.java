@@ -260,6 +260,8 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (ApiException e){
             Toast.makeText(this, "Sign in Failed", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intent);
             FirebaseGoogleAuth(null);
 
 
