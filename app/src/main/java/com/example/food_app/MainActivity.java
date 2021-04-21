@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
             {
                 AllowAccess(UserPhoneKey, UserPasswordKey);
 
-                loadingBar.setTitle("Already Logged in");
                 loadingBar.setMessage("Please wait.....");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
@@ -244,12 +243,25 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if (usersData.getPassword().equals(password))
                         {
-                            Toast.makeText(MainActivity.this, "Please wait, you are already logged in...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "You are already logged in...", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
+                            if(usersData.getUser().compareTo("Customer")==0){
+                                Intent intent = new Intent(MainActivity.this, Customer.class);
+                                Prevalent.currentOnlineUser = usersData;
+                                startActivity(intent);
+                            }
+                            else if(usersData.getUser().compareTo("Wholesaler")==0){
+                                Intent intent = new Intent(MainActivity.this, WholeSaler.class);
+                                Prevalent.currentOnlineUser = usersData;
+                                startActivity(intent);
+                            }
+                            else if(usersData.getUser().compareTo("Retailer")==0){
+                                Intent intent = new Intent(MainActivity.this, Retailer.class);
+                                Prevalent.currentOnlineUser = usersData;
+                                startActivity(intent);
+                            }
 
-                            Intent intent = new Intent(MainActivity.this, Customer.class);
-                            Prevalent.currentOnlineUser = usersData;
-                            startActivity(intent);
+
                         }
                         else
                         {
@@ -411,22 +423,22 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-            reff = FirebaseDatabase.getInstance().getReference().child("Gmail_Users").child(personName);
-            reff.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                    String user_kind = datasnapshot.child("Name").getValue().toString();
-                    user.setText(user_kind);
-                    Intent intent = new Intent(MainActivity.this, popwindow.class);
-                    intent.putExtra("username", user.getText().toString());
-                    startActivity(intent);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
+//            reff = FirebaseDatabase.getInstance().getReference().child("Gmail_Users").child(personName);
+//            reff.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+//                    String user_kind = datasnapshot.child("Name").getValue().toString();
+//                    user.setText(user_kind);
+//                    Intent intent = new Intent(MainActivity.this, popwindow.class);
+//                    intent.putExtra("username", user.getText().toString());
+//                    startActivity(intent);
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
 
             Toast.makeText(MainActivity.this, personName + " "+ personEmail, Toast.LENGTH_SHORT).show();
             mGoogleSignInClient.signOut();

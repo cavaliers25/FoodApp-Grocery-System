@@ -2,21 +2,21 @@ package com.example.food_app.Model;
 
 public class Users
 {
-    private String name, phone, password, image, address;
+    private String name, phone, password, image, address, User;
 
     public Users()
     {
 
     }
 
-    public Users(String name, String phone, String password, String image, String address) {
+    public Users(String name, String phone, String password, String image, String address, String User) {
         this.name = name;
         this.phone = phone;
         this.password = password;
         this.image = image;
         this.address = address;
+        this.User = User;
     }
-
 
     public String getName() {
         return name;
@@ -56,5 +56,13 @@ public class Users
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String User) {
+        this.User = User;
     }
 }

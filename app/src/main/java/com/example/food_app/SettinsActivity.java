@@ -28,6 +28,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.util.HashMap;
 
@@ -38,8 +39,8 @@ public class SettinsActivity extends AppCompatActivity
     private CircleImageView profileImageView;
     private EditText fullNameEditText, userPhoneEditText, addressEditText;
     private TextView profileChangeTextBtn,  closeTextBtn, saveTextButton;
-
     private Uri imageUri;
+    private static final int galleryPick =1;
     private String myUrl = "";
     private StorageTask uploadTask;
     private StorageReference storageProfilePrictureRef;
@@ -95,11 +96,15 @@ public class SettinsActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+//                Intent pickPhoto = new Intent(Intent.ACTION_PICK,
+//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(pickPhoto , 1);
                 checker = "clicked";
 
                 CropImage.activity(imageUri)
                         .setAspectRatio(1, 1)
                         .start(SettinsActivity.this);
+
             }
         });
     }
@@ -113,7 +118,7 @@ public class SettinsActivity extends AppCompatActivity
         HashMap<String, Object> userMap = new HashMap<>();
         userMap. put("name", fullNameEditText.getText().toString());
         userMap. put("address", addressEditText.getText().toString());
-        userMap. put("phoneOrder", userPhoneEditText.getText().toString());
+        userMap. put("phone", userPhoneEditText.getText().toString());
         ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
 
         startActivity(new Intent(SettinsActivity.this, MainActivity.class));
