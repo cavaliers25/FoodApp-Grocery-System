@@ -121,7 +121,7 @@ public class SettinsActivity extends AppCompatActivity
         userMap. put("phone", userPhoneEditText.getText().toString());
         ref.child(Prevalent.currentOnlineUser.getPhone()).updateChildren(userMap);
 
-        startActivity(new Intent(SettinsActivity.this, MainActivity.class));
+        startActivity(new Intent(SettinsActivity.this, Customer.class));
         Toast.makeText(SettinsActivity.this, "Profile Info update successfully.", Toast.LENGTH_SHORT).show();
         finish();
     }

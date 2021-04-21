@@ -89,8 +89,8 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(Customer.this, CartActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -177,6 +177,15 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
                         holder.txtProductDescription.setText(model.getDescription());
                         holder.txtProductPrice.setText("Price = " + model.getPrice());
                         Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Customer.this, ProductDetailsActivity.class);
+                                intent.putExtra("pid", model.getPid());
+                                startActivity(intent);
+                            }
+                        });
                     }
 
                     @NonNull
@@ -236,7 +245,8 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
 
         if (id == R.id.nav_cart)
         {
-
+            Intent intent = new Intent(Customer.this, CartActivity.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_orders)
         {
