@@ -150,9 +150,9 @@ public class social_sitesLogin extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(!(dataSnapshot.child("Users").child(phone).exists())){
                     HashMap<String, Object> userdataMap = new HashMap<>();
-                    userdataMap.put("Username", name);
-                    userdataMap.put("Phone Number", phone);
-                    userdataMap.put("Password", pass);
+                    userdataMap.put("name", name);
+                    userdataMap.put("phone", phone);
+                    userdataMap.put("password", pass);
                     userdataMap.put("User", user_select);
 
                     rootRef.child("Users").child(phone).updateChildren(userdataMap)

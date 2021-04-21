@@ -9,7 +9,8 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -19,16 +20,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Food_app"
         android:usesCleartextTraffic="true">
-        <activity android:name=".home"></activity>
+        <activity android:name=".SettinsActivity"/>
+        <activity android:name=".home" />
         <activity
             android:name=".Customer"
             android:label="@string/title_activity_customer"
-            android:theme="@style/Theme.Food_app.NoActionBar" />
+            android:theme="@style/Theme.Food_app.NoActionBar">
+            <intent-filter>
+                <action android:name="package.name.Customer" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Retailer" />
         <activity android:name=".popwindow" />
         <activity android:name=".AddNewProduct" />
         <activity android:name=".WholeSaler" />
         <activity android:name=".GoogleMap" />
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat"/>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

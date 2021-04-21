@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/buttons"
         android:padding="20dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="250dp"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:text="LOGIN"
@@ -30,12 +30,27 @@
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
         android:layout_below="@+id/login"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:hint="Phone Number"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:inputType="number"
         android:id="@+id/phone_number"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_design"
+        android:padding="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_below="@+id/phone_number"
+        android:layout_marginTop="10dp"
+        android:hint="Password"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="textPassword"
+        android:id="@+id/password_login"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -48,7 +63,7 @@
             android:background="@drawable/buttons"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="500dp"
+            android:layout_marginTop="530dp"
             android:text="Get OTP"
             android:textSize="20sp"
             android:textAlignment="center"

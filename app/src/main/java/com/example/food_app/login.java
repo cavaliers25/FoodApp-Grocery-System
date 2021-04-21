@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.food_app.Model.Users;
+import com.example.food_app.Prevalent.Prevalent;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,12 +30,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.concurrent.TimeUnit;
 
+import io.paperdb.Paper;
+
 public class login extends AppCompatActivity {
-    EditText enternumber;
+    EditText enternumber, enterpassword;
     private Button getOtp;
     private ProgressBar progressBar;
     DatabaseReference reff;
     public TextView user;
+    private String parentDbName = "Users";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,44 +48,52 @@ public class login extends AppCompatActivity {
         getOtp = findViewById(R.id.getotp);
         progressBar = findViewById(R.id.progressbar);
         user = findViewById(R.id.kindOfUser);
+        enterpassword = findViewById(R.id.password_login);
 
         getOtp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String phone = enternumber.getText().toString();
+                String password = enterpassword.getText().toString();
                 if(!enternumber.getText().toString().trim().isEmpty()){
                     if((enternumber.getText().toString().trim()).length() ==10){
                         progressBar.setVisibility(View.VISIBLE);
                         getOtp.setVisibility(View.INVISIBLE);
-                        String number = enternumber.getText().toString();
+//                        String number = enternumber.getText().toString();
+//
+//                        final DatabaseReference rootRef;
+//                        rootRef = FirebaseDatabase.getInstance().getReference();
+//
+//                        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                            @Override
+//                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                if(!(dataSnapshot.child("Users").child(number).exists())){
+//                                    Toast.makeText(login.this, "Entered number is not available on our database", Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(login.this, "Please create an account first", Toast.LENGTH_SHORT).show();
+//                                    Intent intent = new Intent(login.this, MainActivity.class);
+//                                    startActivity(intent);
+//                                }
+//                                else {
+//
+//                                    sendVerificationCode(enternumber);
 
-                        final DatabaseReference rootRef;
-                        rootRef = FirebaseDatabase.getInstance().getReference();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onCancelled(@NonNull DatabaseError error) {
+//
+//                            }
+//                        });
 
-                        rootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        AllowAccessToAccount(phone, password);
+
+                        reff = FirebaseDatabase.getInstance().getReference().child("Users").child(phone);
+                        reff.addValueEventListener(new ValueEventListener() {
                             @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                if(!(dataSnapshot.child("Users").child(number).exists())){
-                                    Toast.makeText(login.this, "Entered number is not available on our database", Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(login.this, "Please create an account first", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(login.this, MainActivity.class);
-                                    startActivity(intent);
-                                }
-                                else {
-                                    sendVerificationCode(enternumber);
-                                    reff = FirebaseDatabase.getInstance().getReference().child("Users").child(number);
-                                    reff.addValueEventListener(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-                                            String user_kind = datasnapshot.child("User").getValue().toString();
-                                            user.setText(user_kind);
-                                        }
-
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                        }
-                                    });
-                                }
+                            public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                                String user_kind = datasnapshot.child("User").getValue().toString();
+                                user.setText(user_kind);
                             }
 
                             @Override
@@ -88,7 +101,6 @@ public class login extends AppCompatActivity {
 
                             }
                         });
-
                     }
                     else{
                         Toast.makeText(login.this, "Please enter correct number", Toast.LENGTH_SHORT).show();
@@ -100,6 +112,53 @@ public class login extends AppCompatActivity {
             }
         });
     }
+
+    private void AllowAccessToAccount(String phone, String password) {
+
+        Paper.book().write(Prevalent.UserPhoneKey, phone);
+        Paper.book().write(Prevalent.UserPasswordKey, password);
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+            {
+                if (dataSnapshot.child(parentDbName).child(phone).exists())
+                {
+                    Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
+
+                    if (usersData.getPhone().equals(phone))
+                    {
+                        if (usersData.getPassword().equals(password)){
+                            sendVerificationCode(enternumber);
+                        }
+                        else
+                        {
+                            Toast.makeText(login.this, "Password is incorrect.", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(login.this, login.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+                else
+                {
+                    Toast.makeText(login.this, "Account with this " + phone + " number do not exists.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(login.this, "Please create an account first", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(login.this, MainActivity.class);
+                    startActivity(intent);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     private void sendVerificationCode(EditText enternumber){
         PhoneAuthOptions options =
                 PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())

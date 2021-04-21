@@ -39,6 +39,7 @@
     <string name="categories">Categories</string>
     <string name="settings">Settings</string>
     <string name="logout">Logout</string>
+    <string name="todo">TODO</string>
 
 
 </resources>
