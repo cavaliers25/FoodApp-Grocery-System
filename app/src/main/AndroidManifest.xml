@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".ConfirmFinalOrderActivity"></activity>
+        <activity android:name=".CategoriesActivity"></activity>
+        <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".ProductDetailsActivity" />
         <activity android:name=".SettinsActivity" />

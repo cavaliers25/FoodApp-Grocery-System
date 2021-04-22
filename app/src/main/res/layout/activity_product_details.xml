@@ -9,8 +9,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="260dp"
-        android:scaleType="fitXY"
-        android:id="@+id/product_image_details"/>
+        android:id="@+id/product_image_details"
+        android:src="@drawable/fruits"/>
 
     <TextView
         android:layout_width="match_parent"

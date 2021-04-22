@@ -29,7 +29,6 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:backgroundTint="@color/purple_200"
-        app:srcCompat="@drawable/nav_cart"
-        android:contentDescription="@string/todo" />
+        app:srcCompat="@drawable/nav_cart" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

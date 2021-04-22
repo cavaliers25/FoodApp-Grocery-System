@@ -36,7 +36,7 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private Button NextProcessBtn;
     private TextView txtTotalAmount, txtMsg1;
-    private int overTotalPrice = 0;
+    private double overTotalPrice = 0;
 
 
 
@@ -100,7 +100,7 @@ public class CartActivity extends AppCompatActivity {
                 holder.txtProductPrice.setText(model.getPrice());
                 holder.txtProductName.setText(model.getPname());
 
-                int oneTypeProductPrice = Integer.parseInt(model.getPrice().substring(model.getPrice().length()-1)) * Integer.parseInt(model.getQuantity());
+                double oneTypeProductPrice = Double.parseDouble(model.getPrice().substring(model.getPrice().length()-1)) * Double.parseDouble(model.getQuantity());
                 overTotalPrice = overTotalPrice + oneTypeProductPrice;
                 txtTotalAmount.setText("Total Price = ₹ " + overTotalPrice);
 
