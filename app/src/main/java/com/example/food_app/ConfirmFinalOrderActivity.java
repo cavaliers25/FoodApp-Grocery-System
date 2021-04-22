@@ -93,13 +93,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         }
     }
 
-    private void sendEmail() {
-        String email = emailEditText.getText().toString().trim();
-        String subject = "Order Placed at foodapp";
-        String message = "Your Order is placed. Total Price you have to pay is ₹ " + totalAmount + ".";
-        SendEmail sm = new SendEmail(this, email, subject, message);
-        sm.execute();
-    }
+
 
 
 
@@ -149,7 +143,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                                     {
                                         Toast.makeText(ConfirmFinalOrderActivity.this, "Order placed successfully.", Toast.LENGTH_SHORT).show();
 
-                                        sendEmail();
+
 
                                         Intent intent = new Intent(ConfirmFinalOrderActivity.this, Customer.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
