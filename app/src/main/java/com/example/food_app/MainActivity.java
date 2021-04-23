@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.example.food_app.Model.Users;
 import com.example.food_app.Prevalent.Prevalent;
-import com.example.food_app.Retailer.Retailer;
+//import com.example.food_app.Retailer.Retailer;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;

@@ -15,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.food_app.Retailer.Retailer;
+//import com.example.food_app.Retailer.Retailer;
 
 import java.util.ArrayList;
 import java.util.List;

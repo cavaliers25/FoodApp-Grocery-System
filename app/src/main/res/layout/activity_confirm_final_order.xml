@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="20dp"
         android:hint="Name" />
 
@@ -86,10 +86,37 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/buttons"
         android:layout_margin="20dp"
-        android:text="Get Location"
+        android:text="Live Location"
         android:textAllCaps="false"
         android:textSize="15sp"
         android:id="@+id/getLocation1"/>
+
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id = "@+id/edtpay"
+        android:text = " Payment Method"
+        android:focusable="false"
+        android:clickable="false"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/getLocation1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.rengwuxian.materialedittext.MaterialEditText>
+
+    <RadioButton
+        android:id = "@+id/rdiCashOnDelivery"
+        android:text="Cash On Delivery"
+        android:checked="true"
+        android:layout_below="@id/edtpay"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </RadioButton>
+
 
     <Button
         android:id="@+id/confirm_final_order_btn"

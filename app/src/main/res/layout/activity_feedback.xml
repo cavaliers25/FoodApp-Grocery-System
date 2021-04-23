@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@drawable/customer"
+    tools:context=".feedbackActivity">
+
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="83dp"
+        android:numStars="5"
+        android:stepSize="1"
+        android:background="@color/white"/>
+
+    <EditText
+        android:id="@+id/namedata"
+        android:layout_width="275dp"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="173dp"
+        android:ems="10"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+
+        android:id="@+id/emaildata"
+        android:layout_width="279dp"
+        android:layout_height="69dp"
+        android:layout_below="@+id/namedata"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:hint="Email"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/messagedata"
+        android:layout_width="286dp"
+        android:layout_height="62dp"
+        android:layout_below="@+id/emaildata"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Enter your valuable feedback"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/btn_send"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="90dp"
+        android:background="@color/purple_200"
+        android:text="Send" />
+
+    <Button
+        android:id="@+id/btn_details"
+        android:layout_width="220dp"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/white"
+        android:enabled="false"
+        android:text="View sended Details"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center_horizontal"
+        android:shadowColor="#7749E3"
+        android:text="Feedback form"
+        android:textColor="@color/design_default_color_surface"
+        android:textSize="30sp"
+        android:visibility="visible" />
+
+</RelativeLayout>

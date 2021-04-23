@@ -86,6 +86,7 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.rey5137:material:1.2.5'
     implementation 'io.paperdb:paperdb:2.6'
+    implementation 'com.firebase:firebase-client-android:2.5.2'
 
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'
     implementation 'com.cepheuen.elegant-number-button:lib:1.0.2'
@@ -101,5 +102,6 @@ dependencies {
     implementation files('libs/activation.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/mail.jar')
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 
 }

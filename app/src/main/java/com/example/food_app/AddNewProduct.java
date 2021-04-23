@@ -27,7 +27,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -180,7 +179,7 @@ public class AddNewProduct extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
 
-                            Intent intent = new Intent(AddNewProduct.this, WholeSaler.class);
+                            Intent intent = new Intent(AddNewProduct.this, Retailer.class);
                             startActivity(intent);
 
                             loadingBar.dismiss();

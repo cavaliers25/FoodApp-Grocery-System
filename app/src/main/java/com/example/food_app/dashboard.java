@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class dashboard extends AppCompatActivity {
     private Button customer;
     private Button retailer;
@@ -29,7 +27,7 @@ public class dashboard extends AppCompatActivity {
         wholesaler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(dashboard.this, WholeSaler.class);
+                Intent intent = new Intent(dashboard.this, Retailer.class);
                 startActivity(intent);
             }
         });

@@ -74,7 +74,8 @@ public class NewOrdersActivity extends AppCompatActivity {
                                         if (i==0){
                                             String uID = getRef(position).getKey();
 
-                                            RemoveOrder(uID);
+                                            holder.showOrdersBtn.setText("Order Confirmed");
+                                            ordersRef.child(model.getPhone()).child("state").setValue("shipped");
                                         }
                                         else {
                                             finish();
@@ -86,7 +87,6 @@ public class NewOrdersActivity extends AppCompatActivity {
                         });
 
                     }
-
 
 
                     @NonNull
@@ -103,16 +103,16 @@ public class NewOrdersActivity extends AppCompatActivity {
 
     }
 
-    private void RemoveOrder(String uID) {
-
-        ordersRef.child(uID).removeValue();
-
-    }
+//    private void RemoveOrder(String uID) {
+//
+//        ordersRef.child(uID).removeValue();
+//
+//    }
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
 
         public TextView userName, userPhoneNumber, userTotalPrice, userShippingAddress;
-        public Button showOrdersBtn;
+        public TextView showOrdersBtn;
 
         public AdminOrdersViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -16,24 +16,24 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="9"
             android:background="@color/purple_200"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/order_placed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
-                android:textAllCaps="true"
-                android:textStyle="bold|normal"
-                android:text="Order Placed"
-                android:textColor="@color/black"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:gravity="center_vertical|start"
+                android:text="Order Placed"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="bold|normal">
 
             </TextView>
 
@@ -42,46 +42,68 @@
                 android:id="@+id/order_price_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="7dp"
-                android:layout_gravity="right"
                 android:text="Price"
-                android:textColor="@color/black"
                 android:textAllCaps="true"
+                android:textColor="@color/black"
                 android:textStyle="bold|normal">
 
             </TextView>
 
             <TextView
                 android:id="@+id/order_address_status"
-                android:layout_marginLeft="10dp"
-                android:gravity="center_vertical|start"
-                android:textAllCaps="true"
-                android:textStyle="italic"
-                android:text="Address"
-
-                android:textColor="@color/black"
-                android:layout_marginBottom="3dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical|start"
+
+                android:text="Address"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textStyle="italic">
 
             </TextView>
 
 
             <TextView
                 android:id="@+id/order_phone_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical|start"
-                android:textAllCaps="true"
-                android:textStyle="italic"
                 android:text="12345678"
+                android:textAllCaps="true"
                 android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:textStyle="italic">
 
             </TextView>
+
         </LinearLayout>
+
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="150dp"
+        android:text="Track Order"
+        android:id="@+id/track_order"/>
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginLeft="240dp"
+        android:layout_marginRight="20dp"
+        android:text="Give Feedback"
+        android:id="@+id/feedback_order"/>
+
+
+    </androidx.cardview.widget.CardView>

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,9 +52,27 @@ public class OrderStatusActivity extends AppCompatActivity {
                 new FirebaseRecyclerAdapter<AdminOrders, AdminOrdersViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull AdminOrdersViewHolder holder, int position, @NonNull AdminOrders model) {
-                        holder.userPhoneNumber.setText("Phone Number: " + model.getPhone());
-                        holder.userTotalPrice.setText("Total Amount: " + model.getTotalAmount());
-                        holder.userShippingAddress.setText("Shipping Address: " + model.getAddress() + ", " + model.getCity() + ", " + model.getPincode());
+                        holder.userPhoneNumber.setText(model.getPhone());
+                        holder.userTotalPrice.setText("Total Amount: ₹" + model.getTotalAmount());
+                        holder.userShippingAddress.setText(model.getAddress() + ", " + model.getCity() + ", " + model.getPincode());
+
+                        holder.trackOrder.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(OrderStatusActivity.this, trackOrderActivity.class);
+                                intent.putExtra("phone", model.getPhone());
+                                startActivity(intent);
+                            }
+                        });
+
+                        holder.feedback.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(OrderStatusActivity.this, feedbackActivity.class);
+                                intent.putExtra("phone", model.getPhone());
+                                startActivity(intent);
+                            }
+                        });
 
                     }
 
@@ -71,15 +90,16 @@ public class OrderStatusActivity extends AppCompatActivity {
 
     }
 
-    private void RemoveOrder(String uID) {
-
-        ordersRef.child(uID).removeValue();
-
-    }
+//    private void RemoveOrder(String uID) {
+//
+//        ordersRef.child(uID).removeValue();
+//
+//    }
 
     public static class AdminOrdersViewHolder extends RecyclerView.ViewHolder {
 
         public TextView userPhoneNumber, userTotalPrice, userShippingAddress;
+        public Button trackOrder, feedback;
 
 
         public AdminOrdersViewHolder(@NonNull View itemView) {
@@ -88,6 +108,9 @@ public class OrderStatusActivity extends AppCompatActivity {
             userPhoneNumber = itemView.findViewById(R.id.order_phone_status);
             userTotalPrice = itemView.findViewById(R.id.order_price_status);
             userShippingAddress = itemView.findViewById(R.id.order_address_status);
+            trackOrder = itemView.findViewById(R.id.track_order);
+            feedback = itemView.findViewById(R.id.feedback_order);
+
 
         }
     }

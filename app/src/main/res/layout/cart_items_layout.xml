@@ -17,6 +17,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:text="Product Name"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="14dp"
             android:layout_marginLeft="5dp"/>
@@ -28,6 +29,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginLeft="5dp"
             android:text="Product Quantity"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textAlignment="textEnd"
             android:textSize="14dp"
@@ -43,6 +45,18 @@
             android:text="Product Price"
             android:textColor="@color/black"
             android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cart_product_quantity"
+            android:layout_marginLeft="160dp"
+            android:text="₹"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"/>
 
     </RelativeLayout>

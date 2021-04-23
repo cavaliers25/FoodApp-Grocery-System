@@ -69,7 +69,14 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
     }
 
-
+    private void sendEmail() {
+        String name = nameEditText.getText().toString().trim();
+        String email = emailEditText.getText().toString().trim();
+        String subject = "Order Placed";
+        String message = "Congratulations "+ name + "\n\nYour order is placed successfully, and will soon be at your doorstep." + "\n\nTotal Price you have to pay is ₹" + totalAmount + ".";
+        SendEmail sm = new SendEmail(this, email, subject, message);
+        sm.execute();
+    }
 
     private void Check()
     {
@@ -102,9 +109,6 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
             ConfirmOrder();
         }
     }
-
-
-
 
 
     private void ConfirmOrder()
@@ -151,8 +155,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                                 {
                                     if (task.isSuccessful())
                                     {
-                                        Toast.makeText(ConfirmFinalOrderActivity.this, "Order placed successfully.", Toast.LENGTH_SHORT).show();
-
+//                                        Toast.makeText(ConfirmFinalOrderActivity.this, "Order placed successfully.", Toast.LENGTH_SHORT).show();
+                                        sendEmail();
                                         Intent intent = new Intent(ConfirmFinalOrderActivity.this, Customer.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
