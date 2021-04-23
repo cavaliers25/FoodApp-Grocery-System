@@ -123,7 +123,7 @@ public class feedbackActivity extends AppCompatActivity {
         String name = namedata.getText().toString().trim();
         String email = emaildata.getText().toString().trim();
         String subject = "Feedback Received";
-        String message = ("Dear "+ name + "\n\nThank you for your valuable feedback");
+        String message = ("Dear "+ name + ", Thank you for your valuable feedback");
         SendEmail sm = new SendEmail(this, email, subject, message);
         sm.execute();
     }
