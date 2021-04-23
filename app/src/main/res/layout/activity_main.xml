@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:menu="@menu/main_menu"
-    android:background="@drawable/login1">
+    android:background="@drawable/homepage">
     <ImageView
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:id="@+id/app_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:src="@drawable/applogo"/>
+        android:layout_marginTop="100dp"
+        android:src="@drawable/foodapp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,19 +20,19 @@
         android:id="@+id/kindOfUser"
         android:visibility="invisible"/>
 
-    <TextView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/slogan"
-        android:text="Find, Discover, Choose"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="65dp"
-        android:layout_marginTop="160dp"
-        android:textAlignment="center"
-        android:textColor="@color/purple_200"
-        android:textStyle="bold|italic"
-        android:textSize="30sp"/>
+<!--    <TextView-->
+<!--        android:id="@+id/slogan"-->
+<!--        android:layout_width="300dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_alignParentTop="true"-->
+<!--        android:layout_alignParentEnd="true"-->
+<!--        android:layout_marginTop="310dp"-->
+<!--        android:layout_marginEnd="55dp"-->
+<!--        android:text="Find, Discover, Choose"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="30sp"-->
+<!--        android:textStyle="bold|italic" />-->
 
     <Button
         android:layout_width="match_parent"

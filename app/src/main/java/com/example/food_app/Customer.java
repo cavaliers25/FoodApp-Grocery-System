@@ -231,7 +231,8 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if (id == R.id.nav_orders)
         {
-
+            Intent intent = new Intent(Customer.this, OrderStatusActivity.class);
+            startActivity(intent);
         }
         else if (id ==R.id.nav_categories)
         {

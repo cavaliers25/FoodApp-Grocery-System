@@ -20,7 +20,11 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".CategoriesActivity"></activity>
+        <activity android:name=".OrderStatusActivity"></activity>
+        <activity android:name=".DeleteDetailsActivity" />
+        <activity android:name=".DeleteActivity" />
+        <activity android:name=".NewOrdersActivity" />
+        <activity android:name=".CategoriesActivity" />
         <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".ProductDetailsActivity" />
@@ -36,14 +40,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Retailer" />
+        <activity android:name=".Retailer.Retailer" />
         <activity android:name=".popwindow" />
         <activity android:name=".AddNewProduct" />
         <activity android:name=".WholeSaler" />
         <activity android:name=".GoogleMap" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

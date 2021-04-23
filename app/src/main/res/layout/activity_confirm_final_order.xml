@@ -80,6 +80,18 @@
         android:hint="Pincode" />
 
     <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shipment_pincode"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/buttons"
+        android:layout_margin="20dp"
+        android:text="Get Location"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:id="@+id/getLocation1"/>
+
+    <Button
         android:id="@+id/confirm_final_order_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

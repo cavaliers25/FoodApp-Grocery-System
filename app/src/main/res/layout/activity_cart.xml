@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CartActivity">
+    tools:context=".CartActivity"
+    android:background="@drawable/cart">
 
     <RelativeLayout
         android:id="@+id/relative"
@@ -57,7 +58,7 @@
         android:background="@color/purple_200"
         android:text="Next"
         android:textSize="20sp"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
         />
 
 </RelativeLayout>

@@ -38,6 +38,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String productID = "", state = "Normal";
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -148,7 +149,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     Products products = dataSnapshot.getValue(Products.class);
 
                     productName.setText(products.getpName());
-                    productPrice.setText("Price = " + products.getPrice());
+                    productPrice.setText(products.getPrice());
                     productDescription.setText(products.getDescription());
                     Picasso.get().load(products.getImage()).into(productImage);
                 }

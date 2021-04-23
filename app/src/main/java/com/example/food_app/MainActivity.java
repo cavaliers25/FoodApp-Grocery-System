@@ -3,7 +3,6 @@ package com.example.food_app;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -18,13 +17,13 @@ import android.widget.Toast;
 
 import com.example.food_app.Model.Users;
 import com.example.food_app.Prevalent.Prevalent;
+import com.example.food_app.Retailer.Retailer;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
 
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -47,7 +46,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 

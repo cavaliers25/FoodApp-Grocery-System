@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeleteDetailsActivity"
+    android:background="@drawable/wholesaler">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:id="@+id/product_image_details"
+        android:src="@drawable/fruits"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_image_details"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Product Name"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:id="@+id/product_name_details"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_name_details"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Product Description"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:id="@+id/product_description_details"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/product_description_details"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="Product Price"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:id="@+id/product_price_details"/>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="15dp"
+        android:text="Delete Product"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:id="@+id/pd_add_to_cart_button"/>
+</RelativeLayout>

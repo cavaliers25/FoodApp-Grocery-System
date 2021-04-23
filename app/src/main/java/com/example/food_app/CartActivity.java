@@ -30,6 +30,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class CartActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -63,7 +66,7 @@ public class CartActivity extends AppCompatActivity {
             public void onClick(View view)
             {
 
-                txtTotalAmount.setText("Total Price = ₹ "+ String.valueOf(overTotalPrice));
+                txtTotalAmount.setText("Total Price = ₹ "+ overTotalPrice);
                 Intent intent = new Intent(CartActivity.this, ConfirmFinalOrderActivity.class);
                 intent.putExtra("Total Price", String.valueOf(overTotalPrice));
                 startActivity(intent);
@@ -95,14 +98,32 @@ public class CartActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull final Cart model)
             {
+//                holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
+//                holder.txtProductPrice.setText("Price " +model.getPrice() + "₹");
+//                holder.txtProductName.setText(model.getPname());
+
+//                double oneTypeProductPrice = ((Dou.valueOf(model.getPrice())))* Integer.valueOf(model.getQuantity());
+//                overTotalPrice = overTotalPrice + oneTypeProductPrice;
+
                 holder.txtProductQuantity.setText("Quantity = " + model.getQuantity());
-                holder.txtProductName.setText("Price " + model.getPname());
+//                holder.txtProductName.setText("Price " + model.getPname());
                 holder.txtProductPrice.setText(model.getPrice());
                 holder.txtProductName.setText(model.getPname());
 
-                double oneTypeProductPrice = Double.parseDouble(model.getPrice().substring(model.getPrice().length()-1)) * Double.parseDouble(model.getQuantity());
-                overTotalPrice = overTotalPrice + oneTypeProductPrice;
-                txtTotalAmount.setText("Total Price = ₹ " + overTotalPrice);
+//                double oneTypeProductTPrice = ((Double.parseDouble(model.getPrice().substring(model.getPrice().length()-1)))* (Double.parseDouble(model.getQuantity())));
+//                overTotalPrice += oneTypeProductTPrice;
+
+                int oneTypeProductTPrice = ((Integer.parseInt(model.getPrice()))* (Integer.parseInt(model.getQuantity())));
+                overTotalPrice += oneTypeProductTPrice;
+
+
+
+                Locale locale = new Locale("en", "IN");
+                NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
+                txtTotalAmount.setText(fmt.format(overTotalPrice));
+
+
+
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

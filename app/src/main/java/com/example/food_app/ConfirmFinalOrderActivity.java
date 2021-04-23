@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
     private EditText nameEditText, phoneEditText, addressEditText, cityEditText, emailEditText, pincodeEditText;
-    private Button confirmOrderBtn;
+    private Button confirmOrderBtn, getLocation1;
 
     private String totalAmount = "";
 
@@ -48,6 +48,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         cityEditText = (EditText) findViewById(R.id.shipment_city);
         emailEditText = (EditText) findViewById(R.id.shipment_email);
         pincodeEditText = (EditText) findViewById(R.id.shipment_pincode);
+        getLocation1 = (Button) findViewById(R.id.getLocation1);
 
 
         confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +58,15 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                 Check();
             }
         });
+
+        getLocation1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConfirmFinalOrderActivity.this, GoogleMap.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 
@@ -142,8 +152,6 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                                     if (task.isSuccessful())
                                     {
                                         Toast.makeText(ConfirmFinalOrderActivity.this, "Order placed successfully.", Toast.LENGTH_SHORT).show();
-
-
 
                                         Intent intent = new Intent(ConfirmFinalOrderActivity.this, Customer.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
