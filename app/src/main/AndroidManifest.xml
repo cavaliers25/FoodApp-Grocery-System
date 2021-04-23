@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity android:name=".OrderStatusActivity"></activity>
+        <activity android:name=".OrderTracking"></activity>
+        <activity android:name=".OrderTrack" />
+        <activity android:name=".OrderStatusActivity" />
         <activity android:name=".DeleteDetailsActivity" />
         <activity android:name=".DeleteActivity" />
         <activity android:name=".NewOrdersActivity" />
