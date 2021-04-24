@@ -11,9 +11,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class OrderTracking extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    ArrayList<LatLng>arrayList = new ArrayList<LatLng>();
+    LatLng user = new LatLng(26.194678,78.179726);
+    LatLng retailer = new LatLng(26.195881,78.151660);
 
 
     @Override
@@ -25,6 +30,9 @@ public class OrderTracking extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map2);
         mapFragment.getMapAsync(this);
+
+        arrayList.add(user);
+        arrayList.add(retailer);
     }
 
     /**
@@ -40,11 +48,14 @@ public class OrderTracking extends FragmentActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        for(int i=0; i<arrayList.size(); i++){
+            mMap.addMarker((new MarkerOptions().position(arrayList.get(i)).title("Marker")));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList.get(i)));
+        }
 
-        // Add a marker in Sydney and move the camera
-        LatLng user = new LatLng(26.840307, 75.777611);
-        mMap.addMarker(new MarkerOptions().position(user).title("user Location"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(user));
+
+
 
     }
 }

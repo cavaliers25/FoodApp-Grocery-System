@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -357,6 +358,7 @@
         app:layout_constraintStart_toEndOf="@id/imageOrderReady"/>
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Your order is delivered successfully"
@@ -364,7 +366,7 @@
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="@id/textOrderReady"
         app:layout_constraintStart_toStartOf="@id/textOrderReady"
-        app:layout_constraintTop_toBottomOf="@id/viewReadySupporter"/>
+        app:layout_constraintTop_toBottomOf="@id/viewReadySupporter" />
 
     <View
         android:layout_width="2dp"
@@ -377,5 +379,20 @@
         app:layout_constraintEnd_toEndOf="@id/viewOrderProcessed"
         app:layout_constraintStart_toStartOf="@id/viewOrderProcessed"
         app:layout_constraintTop_toBottomOf="@id/viewOrderProcessed"/>
+
+    <Button
+        android:id="@+id/track"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/round_buttons"
+        android:text="Track"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:layout_editor_absoluteX="-20dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 
