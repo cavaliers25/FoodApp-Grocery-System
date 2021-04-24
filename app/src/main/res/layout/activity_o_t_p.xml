@@ -18,6 +18,7 @@
         android:text="OTP Verification"
         android:textAlignment="center"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:textStyle="bold" />
 
     <TextView

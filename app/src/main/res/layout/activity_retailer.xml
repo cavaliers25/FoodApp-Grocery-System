@@ -244,7 +244,8 @@
         android:id="@+id/check_orders_btn"
         android:text="Check New Orders"
         android:textAllCaps="false"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
     <LinearLayout
         android:id="@+id/products4"
@@ -256,26 +257,29 @@
         >
 
         <Button
-            android:layout_width="200dp"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:id="@+id/delete_product_btn"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:padding="15dp"
+            android:paddingLeft="30dp"
             android:background="@drawable/buttons"
             android:text="Delete Product"
             android:textAllCaps="false"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
         <Button
-            android:layout_width="130dp"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:id="@+id/admin_logout_btn"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:padding="15dp"
             android:background="@drawable/buttons"
             android:text="Logout"
             android:textAllCaps="false"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 

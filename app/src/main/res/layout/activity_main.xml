@@ -7,18 +7,18 @@
     tools:context=".MainActivity"
     android:background="@drawable/homepage">
     <ImageView
-        android:layout_width="300dp"
+        android:layout_width="400dp"
         android:layout_height="400dp"
         android:id="@+id/app_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:src="@drawable/logo2"/>
+        android:src="@drawable/app_logo_final"/>
 
     <TextView
+        android:id="@+id/kindOfUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/kindOfUser"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 <!--    <TextView-->
 <!--        android:id="@+id/slogan"-->
@@ -47,6 +47,7 @@
         android:text="Already have an Account? Login"
         android:textAllCaps="false"
         android:textSize="15sp"
+        android:textStyle="bold"
         android:id="@+id/main_id_btn" />
 
     <Button
