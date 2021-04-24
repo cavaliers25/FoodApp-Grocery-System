@@ -20,6 +20,7 @@ public class OrderTracking extends FragmentActivity implements OnMapReadyCallbac
     LatLng user = new LatLng(26.194678,78.179726);
     LatLng retailer = new LatLng(26.195881,78.151660);
 
+    ArrayList<String>title = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,9 @@ public class OrderTracking extends FragmentActivity implements OnMapReadyCallbac
 
         arrayList.add(user);
         arrayList.add(retailer);
+
+        title.add("Akash Singh Chauhan");
+        title.add("Anand Metro Mart");
     }
 
     /**
@@ -49,7 +53,9 @@ public class OrderTracking extends FragmentActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         for(int i=0; i<arrayList.size(); i++){
-            mMap.addMarker((new MarkerOptions().position(arrayList.get(i)).title("Marker")));
+            for(int j=0; j<title.size(); j++){
+                mMap.addMarker((new MarkerOptions().position(arrayList.get(i)).title(String.valueOf(title.get(j)))));
+            }
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15.0f));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(arrayList.get(i)));
         }
