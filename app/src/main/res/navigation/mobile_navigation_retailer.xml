@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation_wholesale"
+    android:id="@+id/mobile_navigation_retailer"
     app:startDestination="@+id/nav_categories">
 
     <fragment
@@ -27,4 +27,17 @@
         android:name="com.example.food_app.ui.Categories.CategoriesFragment"
         android:label="Add New Product"
         tools:layout="@layout/categories_fragment" />
+
+    <fragment
+        android:id="@+id/nav_cart_retailers"
+        android:name="com.example.food_app.ui.Categories.CategoriesFragment"
+        android:label="Cart"
+        tools:layout="@layout/categories_fragment" />
+
+    <fragment
+        android:id="@+id/nav_orders_retailers"
+        android:name="com.example.food_app.ui.Categories.CategoriesFragment"
+        android:label="Orders"
+        tools:layout="@layout/categories_fragment" />
+
 </navigation>

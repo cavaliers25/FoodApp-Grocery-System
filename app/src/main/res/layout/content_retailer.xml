@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_retailer">
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/addNewProduct"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:layout_marginTop="60dp"-->
+    <!--        android:layout_marginEnd="60dp"-->
+    <!--        android:background="@drawable/buttons_wholesale"-->
+    <!--        android:padding="10dp"-->
+    <!--        android:text="Add New Product"-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="25sp"-->
+    <!--        android:textStyle="bold" />-->
+
+    <LinearLayout
+        android:id="@+id/linear1_category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addNewProduct"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fruits"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/fruits1"/>
+
+        <ImageView
+            android:id="@+id/vegetables"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/vegetables1"/>
+
+        <ImageView
+            android:id="@+id/milk"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/milk1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/products1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear1_category_layout"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_fruits"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Fruits"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_vegetables"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Vegetables"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_milk"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Milk"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2_category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear1_category_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/essentials"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/oils"/>
+
+        <ImageView
+            android:id="@+id/beverages"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/beverages1"/>
+
+        <ImageView
+            android:id="@+id/bakeryDairyEggs"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/bakerydairyeggs"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/products2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2_category_layout"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_essentials"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Essentials"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_beverages"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Beverages"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_dairy"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Dairy"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear3_category_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linear2_category_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/breakfastSnacks"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/snacks"/>
+
+        <ImageView
+            android:id="@+id/personelCare"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/personalcare"/>
+
+        <ImageView
+            android:id="@+id/babyCare"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:src="@drawable/babycare"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/products3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear3_category_layout"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/text_snacks"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Snacks"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_hygiene"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Hygiene"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_baby_care"
+            android:layout_width="130dp"
+            android:layout_height="30dp"
+            android:text="Baby Care"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+
+</RelativeLayout>

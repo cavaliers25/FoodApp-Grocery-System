@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_buy"
+            android:icon="@drawable/category"
+            android:title="Buy from Wholesaler"
+            android:iconTint="@color/white"/>
+
+        <item
+            android:id="@+id/nav_cart_retailers"
+            android:icon="@drawable/nav_cart"
+            android:title="Cart"
+            android:iconTint="@color/white"/>
+
+        <item
+            android:id="@+id/nav_orders_retailers"
+            android:icon="@drawable/orders"
+            android:title="Orders"
+            android:iconTint="@color/white"/>
+
+        <item
+            android:id="@+id/nav_categories"
+            android:icon="@android:drawable/ic_menu_add"
+            android:title="Add New Product"
+            android:iconTint="@color/white"/>
+        <item
+            android:id="@+id/nav_cart"
+            android:icon="@android:drawable/ic_menu_delete"
+            android:title="Delete Product"
+            android:iconTint="@color/white"/>
+        <item
+            android:id="@+id/nav_orders"
+            android:icon="@android:drawable/checkbox_on_background"
+            android:title="Check New Orders"
+            android:iconTint="@color/white"/>
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/logout"
+            android:title="@string/logout"
+            android:iconTint="@color/white"/>
+    </group>
+</menu>
