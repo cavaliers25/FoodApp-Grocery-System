@@ -10,6 +10,8 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="260dp"
+        android:padding="10dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/product_image_details"
         android:src="@drawable/fruits"/>
 
@@ -17,11 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_image_details"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="20sp"
         android:text="Product Name"
+        android:background="@drawable/buttons"
         android:gravity="center"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:padding="10dp"
         android:layout_marginTop="20dp"
         android:id="@+id/product_name_details"/>
 
@@ -29,10 +35,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_name_details"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textStyle="bold"
+        android:background="@drawable/buttons"
         android:textSize="18sp"
         android:text="Product Description"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:padding="10dp"
         android:gravity="center"
         android:layout_marginTop="15dp"
         android:id="@+id/product_description_details"/>
@@ -41,10 +51,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_description_details"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:background="@drawable/buttons"
         android:textStyle="bold"
         android:textSize="20sp"
         android:text="Product Price"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:padding="10dp"
         android:gravity="center"
         android:layout_marginTop="15dp"
         android:id="@+id/product_price_details"/>

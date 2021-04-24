@@ -16,4 +16,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorSemiDark">#400000</color>
     <color name="colorRemaining">#757575</color>
+    <color name="overlayBackground">#7f333639</color>
+
 </resources>

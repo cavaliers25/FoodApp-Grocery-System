@@ -17,7 +17,7 @@ public class Retailer extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_whole_saler);
+        setContentView(R.layout.activity_retailer);
 
         fruits = (ImageView) findViewById(R.id.fruits);
         vegetables = (ImageView) findViewById(R.id.vegetables);

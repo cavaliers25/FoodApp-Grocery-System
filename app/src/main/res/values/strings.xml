@@ -41,6 +41,12 @@
     <string name="logout">Logout</string>
     <string name="todo">TODO</string>
     <string name="name_of_food">Name of Food</string>
+    <string name="title_activity_reatiler_nav">ReatilerActivity_nav</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="title_activity_retailer_nav">RetailerNavActivity</string>
 
 
 </resources>

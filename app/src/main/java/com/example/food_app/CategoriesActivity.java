@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.food_app.Interface.ItemClickListener;
 import com.example.food_app.Model.Products;
@@ -29,6 +30,7 @@ public class CategoriesActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
     FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter;
+    String CategoryId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,10 @@ public class CategoriesActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+
+        CategoryId = getIntent().getStringExtra("CategoryID");
+
+
         FirebaseRecyclerOptions<Products> options =
                 new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(ProductsRef, Products.class)
@@ -57,19 +63,29 @@ public class CategoriesActivity extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
                     {
-                        holder.txtProductName.setText(model.getpName());
-                        holder.txtProductDescription.setText(model.getDescription());
-                        holder.txtProductPrice.setText("Price = ₹ " + model.getPrice());
-                        Picasso.get().load(model.getImage()).into(holder.imageView);
+                        if(model.getCategory().compareTo(CategoryId)==0){
+                            holder.txtProductName.setText(model.getpName());
+                            holder.txtProductDescription.setText(model.getDescription());
+                            holder.txtProductPrice.setText("Price = ₹ " + model.getPrice());
+                            Picasso.get().load(model.getImage()).into(holder.imageView);
 
-                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent intent = new Intent(CategoriesActivity.this, ProductDetailsActivity.class);
-                                intent.putExtra("pid", model.getPid());
-                                startActivity(intent);
-                            }
-                        });
+                            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(CategoriesActivity.this, ProductDetailsActivity.class);
+                                    intent.putExtra("pid", model.getPid());
+                                    startActivity(intent);
+                                }
+                            });
+                            holder.itemView.setVisibility(View.VISIBLE);
+                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                        }
+                        else{
+                            holder.itemView.setVisibility(View.GONE);
+                            holder.itemView.setLayoutParams(new RecyclerView.LayoutParams(0,0));
+                        }
+
+
                     }
 
                     @NonNull

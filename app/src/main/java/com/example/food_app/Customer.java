@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,8 +21,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.food_app.Interface.ItemClickListener;
+import com.example.food_app.Model.Category;
 import com.example.food_app.Model.Products;
 import com.example.food_app.Prevalent.Prevalent;
+import com.example.food_app.ViewHolder.MenuViewHolder;
 import com.example.food_app.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -30,17 +34,19 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
 
 
 public class Customer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
-    private DatabaseReference ProductsRef;
+    private DatabaseReference category;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    RecyclerView.Adapter adapter;
+//    RecyclerView.Adapter adapter;
+    FirebaseDatabase firebase;
+    FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
+
 
     DatabaseReference reff;
 
@@ -56,7 +62,7 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_customer);
 
 
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        category = FirebaseDatabase.getInstance().getReference().child("Category");
 
 
         Paper.init(this);
@@ -93,94 +99,133 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
         Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
 
+
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-
-
-
+        loadMenu();
     }
 
 
+//    @Override
+//    protected void onStart()
+//    {
+//        super.onStart();
+//
+//        MenuViewHolder adapter = new MenuViewHolder(this, categories_list, categories_images){
+//            @NonNull
+//            @Override
+//            public CategoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+//                LayoutInflater inflater = LayoutInflater.from(context);
+//                View view = inflater.inflate(R.layout.items_layout, parent, false);
+//                ViewHolder viewHolder = new ViewHolder(view);
+//                return viewHolder;
+//            }
+//
+//            @Override
+//            public void onBindViewHolder(@NonNull CategoriesAdapter.ViewHolder holder, int position) {
+//                holder.product_name1.setText(categories_list[position]);
+//                holder.image.setImageResource(categories_images[position]);
+//
+//                holder.itemView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Intent intent = new Intent(Customer.this, CategoriesActivity.class);
+////                        intent.putExtra("pid", model.getPid());
+//                        startActivity(intent);
+//                    }
+//                });
+//
+//            }
+//
 
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
+//        };
+//
+////        FirebaseRecyclerOptions<Products> options =
+////                new FirebaseRecyclerOptions.Builder<Products>()
+////                        .setQuery(ProductsRef, Products.class)
+////                        .build();
+////
+////
+////        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
+////                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+////                    @SuppressLint("SetTextI18n")
+////                    @Override
+////                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
+////                    {
+////                        if(model.getCategory().compareTo("Milk")==0){
+////                            holder.txtProductName.setText(model.getpName());
+////                            holder.txtProductDescription.setText(model.getDescription());
+////                            holder.txtProductPrice.setText("Price = ₹ " + model.getPrice());
+////                            Picasso.get().load(model.getImage()).into(holder.imageView);
+////                        }
+////
+////                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+////                            @Override
+////                            public void onClick(View v) {
+////                                Intent intent = new Intent(Customer.this, ProductDetailsActivity.class);
+////                                intent.putExtra("pid", model.getPid());
+////                                startActivity(intent);
+////                            }
+////                        });
+////                    }
+////
+////                    @NonNull
+////                    @Override
+////                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+////                    {
+////                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_layout_1, parent, false);
+////                        ProductViewHolder holder = new ProductViewHolder(view);
+////                        return holder;
+////                    }
+////                };
+//        recyclerView.setAdapter(adapter);
+//    }
 
-        CategoriesAdapter adapter = new CategoriesAdapter(this, categories_list, categories_images){
-            @NonNull
+
+
+    private void loadMenu() {
+
+        FirebaseRecyclerOptions<Category> options =
+                new FirebaseRecyclerOptions.Builder<Category>()
+                        .setQuery(category, Category.class)
+                        .build();
+
+        adapter = new FirebaseRecyclerAdapter<Category, MenuViewHolder>(options) {
             @Override
-            public CategoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                LayoutInflater inflater = LayoutInflater.from(context);
-                View view = inflater.inflate(R.layout.items_layout, parent, false);
-                ViewHolder viewHolder = new ViewHolder(view);
-                return viewHolder;
-            }
+            protected void onBindViewHolder(@NonNull MenuViewHolder holder, int position, @NonNull Category model) {
 
-            @Override
-            public void onBindViewHolder(@NonNull CategoriesAdapter.ViewHolder holder, int position) {
-                holder.product_name1.setText(categories_list[position]);
-                holder.image.setImageResource(categories_images[position]);
-
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.txtMenuName.setText(model.getName());
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+                final Category clickItem = model;
+                holder.setItemClickListener(new ItemClickListener() {
                     @Override
-                    public void onClick(View v) {
+                    public void onClick(View view, int position, boolean isLongClick) {
+//                        Toast.makeText(Customer.this, clickItem.getName(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Customer.this, CategoriesActivity.class);
-//                        intent.putExtra("pid", model.getPid());
+                        intent.putExtra("CategoryID", clickItem.getName().toString());
                         startActivity(intent);
                     }
                 });
 
             }
 
+            @NonNull
             @Override
-            public int getItemCount() {
-                return categories_images.length;
+            public MenuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+                View view = inflater.inflate(R.layout.items_layout, parent, false);
+                MenuViewHolder viewHolder = new MenuViewHolder(view);
+                return viewHolder;
             }
         };
 
-//        FirebaseRecyclerOptions<Products> options =
-//                new FirebaseRecyclerOptions.Builder<Products>()
-//                        .setQuery(ProductsRef, Products.class)
-//                        .build();
-//
-//
-//        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-//                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
-//                    @SuppressLint("SetTextI18n")
-//                    @Override
-//                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
-//                    {
-//                        if(model.getCategory().compareTo("Milk")==0){
-//                            holder.txtProductName.setText(model.getpName());
-//                            holder.txtProductDescription.setText(model.getDescription());
-//                            holder.txtProductPrice.setText("Price = ₹ " + model.getPrice());
-//                            Picasso.get().load(model.getImage()).into(holder.imageView);
-//                        }
-//
-//                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                Intent intent = new Intent(Customer.this, ProductDetailsActivity.class);
-//                                intent.putExtra("pid", model.getPid());
-//                                startActivity(intent);
-//                            }
-//                        });
-//                    }
-//
-//                    @NonNull
-//                    @Override
-//                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-//                    {
-//                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_layout_1, parent, false);
-//                        ProductViewHolder holder = new ProductViewHolder(view);
-//                        return holder;
-//                    }
-//                };
         recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
+
+
 
     @Override
     public void onBackPressed() {

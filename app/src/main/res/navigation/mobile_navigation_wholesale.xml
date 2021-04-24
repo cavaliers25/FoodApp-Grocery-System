@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_categories">
+
+    <fragment
+        android:id="@+id/nav_cart"
+        android:name="com.example.food_app.ui.Cart.CartFragment"
+        android:label="Delete Product"
+        tools:layout="@layout/cart_fragment" />
+
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.food_app.ui.Logout.LogoutFragment"
+        android:label="@string/logout"
+        tools:layout="@layout/logout_fragment" />
+    <fragment
+        android:id="@+id/nav_orders"
+        android:name="com.example.food_app.ui.Orders.OrdersFragment"
+        android:label="Check New Orders"
+        tools:layout="@layout/orders_fragment" />
+
+    <fragment
+        android:id="@+id/nav_categories"
+        android:name="com.example.food_app.ui.Categories.CategoriesFragment"
+        android:label="Add New Product"
+        tools:layout="@layout/categories_fragment" />
+</navigation>
