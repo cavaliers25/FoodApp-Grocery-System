@@ -89,11 +89,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
+        android:background="@drawable/round_buttons"
         android:layout_alignParentBottom="true"
         android:layout_margin="15dp"
         android:text="Add to Cart"
         android:textAllCaps="false"
         android:textSize="18sp"
+        android:textStyle="bold"
         android:id="@+id/pd_add_to_cart_button"/>
 </RelativeLayout>

@@ -124,7 +124,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
-        android:background="@color/purple_200"
+        android:background="@drawable/round_buttons"
         android:text="Confirm"
         android:textColor="@color/black" />
 
