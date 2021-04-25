@@ -46,6 +46,7 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
 //    RecyclerView.Adapter adapter;
     FirebaseDatabase firebase;
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
+    private String username = "1";
 
 
     DatabaseReference reff;
@@ -63,6 +64,8 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
 
 
         category = FirebaseDatabase.getInstance().getReference().child("Category");
+
+        username = getIntent().getStringExtra("username");
 
 
         Paper.init(this);
@@ -95,8 +98,11 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+
+
+        userNameTextView.setText("Akash Singh Chauhan");
         Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+
 
 
 
@@ -106,82 +112,6 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
         recyclerView.setLayoutManager(layoutManager);
         loadMenu();
     }
-
-
-//    @Override
-//    protected void onStart()
-//    {
-//        super.onStart();
-//
-//        MenuViewHolder adapter = new MenuViewHolder(this, categories_list, categories_images){
-//            @NonNull
-//            @Override
-//            public CategoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//                LayoutInflater inflater = LayoutInflater.from(context);
-//                View view = inflater.inflate(R.layout.items_layout, parent, false);
-//                ViewHolder viewHolder = new ViewHolder(view);
-//                return viewHolder;
-//            }
-//
-//            @Override
-//            public void onBindViewHolder(@NonNull CategoriesAdapter.ViewHolder holder, int position) {
-//                holder.product_name1.setText(categories_list[position]);
-//                holder.image.setImageResource(categories_images[position]);
-//
-//                holder.itemView.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Intent intent = new Intent(Customer.this, CategoriesActivity.class);
-////                        intent.putExtra("pid", model.getPid());
-//                        startActivity(intent);
-//                    }
-//                });
-//
-//            }
-//
-
-//        };
-//
-////        FirebaseRecyclerOptions<Products> options =
-////                new FirebaseRecyclerOptions.Builder<Products>()
-////                        .setQuery(ProductsRef, Products.class)
-////                        .build();
-////
-////
-////        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter =
-////                new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
-////                    @SuppressLint("SetTextI18n")
-////                    @Override
-////                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model)
-////                    {
-////                        if(model.getCategory().compareTo("Milk")==0){
-////                            holder.txtProductName.setText(model.getpName());
-////                            holder.txtProductDescription.setText(model.getDescription());
-////                            holder.txtProductPrice.setText("Price = ₹ " + model.getPrice());
-////                            Picasso.get().load(model.getImage()).into(holder.imageView);
-////                        }
-////
-////                        holder.itemView.setOnClickListener(new View.OnClickListener() {
-////                            @Override
-////                            public void onClick(View v) {
-////                                Intent intent = new Intent(Customer.this, ProductDetailsActivity.class);
-////                                intent.putExtra("pid", model.getPid());
-////                                startActivity(intent);
-////                            }
-////                        });
-////                    }
-////
-////                    @NonNull
-////                    @Override
-////                    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
-////                    {
-////                        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.items_layout_1, parent, false);
-////                        ProductViewHolder holder = new ProductViewHolder(view);
-////                        return holder;
-////                    }
-////                };
-//        recyclerView.setAdapter(adapter);
-//    }
 
 
 
@@ -283,6 +213,12 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
         {
 
         }
+        else if (id ==R.id.nav_search)
+        {
+            Intent intent = new Intent(Customer.this, SearchProductActivity.class);
+            startActivity(intent);
+        }
+
         else if (id == R.id.nav_settings)
         {
             Intent intent = new Intent(this, SettinsActivity.class);

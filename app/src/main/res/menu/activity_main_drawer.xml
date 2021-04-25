@@ -15,6 +15,11 @@
             android:title="@string/cart"
             android:iconTint="@color/white"/>
         <item
+            android:id="@+id/nav_search"
+            android:icon="@android:drawable/ic_search_category_default"
+            android:title="Seacrh"
+            android:iconTint="@color/white"/>
+        <item
             android:id="@+id/nav_orders"
             android:icon="@drawable/orders"
             android:title="@string/orders"

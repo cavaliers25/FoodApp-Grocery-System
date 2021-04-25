@@ -20,19 +20,6 @@
         android:layout_height="wrap_content"
         android:visibility="invisible" />
 
-<!--    <TextView-->
-<!--        android:id="@+id/slogan"-->
-<!--        android:layout_width="300dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentTop="true"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginTop="310dp"-->
-<!--        android:layout_marginEnd="55dp"-->
-<!--        android:text="Find, Discover, Choose"-->
-<!--        android:textAlignment="center"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="30sp"-->
-<!--        android:textStyle="bold|italic" />-->
 
     <Button
         android:layout_width="match_parent"
@@ -47,7 +34,7 @@
         android:text="Already have an Account? Login"
         android:textAllCaps="false"
         android:textSize="15sp"
-        android:textStyle="bold"
+
         android:id="@+id/main_id_btn" />
 
     <Button

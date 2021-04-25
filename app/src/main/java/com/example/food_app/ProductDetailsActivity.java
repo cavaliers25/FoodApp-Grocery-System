@@ -38,8 +38,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private String productID = "", state = "Normal";
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {

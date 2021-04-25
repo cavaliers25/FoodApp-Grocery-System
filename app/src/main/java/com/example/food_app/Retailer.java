@@ -74,7 +74,7 @@ public class Retailer extends AppCompatActivity implements NavigationView.OnNavi
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+//        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
 
 
@@ -185,7 +185,7 @@ public class Retailer extends AppCompatActivity implements NavigationView.OnNavi
         }
         else if (id ==R.id.nav_buy)
         {
-            Intent intent = new Intent(Retailer.this, Customer.class);
+            Intent intent = new Intent(Retailer.this, Order_Retailer_buy.class);
             startActivity(intent);
 
         }
@@ -200,7 +200,7 @@ public class Retailer extends AppCompatActivity implements NavigationView.OnNavi
             finish();
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout1);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout2);
         drawer.closeDrawer(GravityCompat.START);
         return true;
 

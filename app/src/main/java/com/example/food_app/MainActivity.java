@@ -143,7 +143,8 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG1, "onSuccess"+ loginResult);
                 handleFacebookToken(loginResult.getAccessToken());
-                Intent intent = new Intent(MainActivity.this, popwindow.class);
+                Intent intent = new Intent(MainActivity.this, Customer.class);
+                intent.putExtra("username", "user");
                 startActivity(intent);
                 String fb_id = loginResult.getAccessToken().getUserId();
 //                FirebaseDatabase.getInstance().getReference("Facebook SignUp")
@@ -421,22 +422,22 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-//            reff = FirebaseDatabase.getInstance().getReference().child("Gmail_Users").child(personName);
-//            reff.addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
-//                    String user_kind = datasnapshot.child("Name").getValue().toString();
-//                    user.setText(user_kind);
-//                    Intent intent = new Intent(MainActivity.this, popwindow.class);
-//                    intent.putExtra("username", user.getText().toString());
-//                    startActivity(intent);
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
+            reff = FirebaseDatabase.getInstance().getReference().child("Gmail_Users").child(personName);
+            reff.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+                    String user_kind = datasnapshot.child("Name").getValue().toString();
+                    user.setText(user_kind);
+                    Intent intent = new Intent(MainActivity.this, Customer.class);
+                    intent.putExtra("username", user.getText().toString());
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
 
             Toast.makeText(MainActivity.this, personName + " "+ personEmail, Toast.LENGTH_SHORT).show();
             mGoogleSignInClient.signOut();
