@@ -8,7 +8,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 
@@ -28,6 +30,8 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
     private Button confirmOrderBtn, getLocation1;
 
     private String totalAmount = "";
+    private RadioButton rdiPayNow;
+    private int check = 0;
 
 
     @Override
@@ -49,6 +53,17 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
         emailEditText = (EditText) findViewById(R.id.shipment_email);
         pincodeEditText = (EditText) findViewById(R.id.shipment_pincode);
         getLocation1 = (Button) findViewById(R.id.getLocation1);
+        rdiPayNow = (RadioButton) findViewById(R.id.paynow);
+
+        rdiPayNow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    check = 1;
+                }
+
+            }
+        });
 
 
         confirmOrderBtn.setOnClickListener(new View.OnClickListener() {
@@ -155,12 +170,25 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                                 {
                                     if (task.isSuccessful())
                                     {
-                                        Toast.makeText(ConfirmFinalOrderActivity.this, "Order placed successfully.", Toast.LENGTH_LONG).show();
-                                        sendEmail();
-                                        Intent intent = new Intent(ConfirmFinalOrderActivity.this, Customer.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
-                                        finish();
+                                        if(check == 1){
+                                            Intent intent = new Intent(ConfirmFinalOrderActivity.this, PaymentGateway.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            intent.putExtra("name", nameEditText.getText().toString());
+                                            intent.putExtra("phone", phoneEditText.getText().toString());
+                                            intent.putExtra("amount", totalAmount);
+                                            startActivity(intent);
+                                            finish();
+
+                                        }
+                                        else{
+                                            Toast.makeText(ConfirmFinalOrderActivity.this, "Order placed successfully.", Toast.LENGTH_LONG).show();
+                                            sendEmail();
+                                            Intent intent = new Intent(ConfirmFinalOrderActivity.this, Customer.class);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+
                                     }
                                 }
                             });

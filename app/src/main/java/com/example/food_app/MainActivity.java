@@ -246,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
                             loadingBar.dismiss();
                             if(usersData.getUser().compareTo("Customer")==0){
                                 Intent intent = new Intent(MainActivity.this, Customer.class);
+                                intent.putExtra("username", "login");
                                 Prevalent.currentOnlineUser = usersData;
                                 startActivity(intent);
                             }

@@ -236,8 +236,8 @@ public class OTP extends AppCompatActivity {
 
                             if (user_kind.compareTo("Customer")==0){
                                 Intent intent = new Intent(getApplicationContext(), Customer.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                intent.putExtra("mobile", enternumber.getText().toString());
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.putExtra("username", "login");
                                 startActivity(intent);
                             }
                             else if (user_kind.compareTo("Retailer")==0){

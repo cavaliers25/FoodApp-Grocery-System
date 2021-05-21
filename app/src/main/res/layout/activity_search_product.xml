@@ -17,13 +17,21 @@
         android:layout_alignParentTop="true">
 
         <EditText
-            android:layout_width="310dp"
-            android:layout_marginLeft="5dp"
+            android:layout_width="300dp"
+            android:layout_marginLeft="35dp"
             android:layout_height="wrap_content"
             android:id="@+id/search_product_name"
             android:hint="Product Name"
             android:textSize="20dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            />
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/app_name"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/ic_back"
+            android:id="@+id/return_back"/>
 
         <Button
             android:id="@+id/search_btn"

@@ -118,6 +118,18 @@
         android:layout_height="wrap_content">
     </RadioButton>
 
+    <RadioButton
+        android:id = "@+id/paynow"
+        android:text="Pay Now"
+        android:checked="false"
+        android:layout_below="@id/rdiCashOnDelivery"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </RadioButton>
+
 
     <Button
         android:id="@+id/confirm_final_order_btn"

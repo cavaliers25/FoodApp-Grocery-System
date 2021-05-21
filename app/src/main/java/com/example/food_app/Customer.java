@@ -46,7 +46,8 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
 //    RecyclerView.Adapter adapter;
     FirebaseDatabase firebase;
     FirebaseRecyclerAdapter<Category, MenuViewHolder> adapter;
-    private String username = "1";
+    String username = "";
+
 
 
     DatabaseReference reff;
@@ -65,7 +66,11 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
 
         category = FirebaseDatabase.getInstance().getReference().child("Category");
 
-        username = getIntent().getStringExtra("username");
+        if(getIntent() != null){
+            username = getIntent().getStringExtra("username");
+        }
+
+
 
 
         Paper.init(this);
@@ -100,11 +105,16 @@ public class Customer extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
-        userNameTextView.setText("Akash Singh Chauhan");
-        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-
-
-
+        if(username != null && !(username.isEmpty()) && (username.compareTo("user")==0)){
+            userNameTextView.setText("Facebook User");
+        }
+        else if (username != null && !(username.isEmpty()) && (username.compareTo("login")==0)){
+            userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+            Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
+        else {
+            userNameTextView.setText(username);
+        }
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
