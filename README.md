@@ -5,3 +5,11 @@ free experience for grocery shoppers and shopkeepers alike. The app is a simplis
 approach to making grocery shopping intuitive and fun.
 # Logo :
 
+# Development Tools :
+Platform - 
+Backend - 
+Database - 
+Frontend/UI - 
+UI Element Design - 
+Location - 
+
