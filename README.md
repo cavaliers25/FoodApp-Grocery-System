@@ -4,7 +4,7 @@ and wholesalers. With a simple and clean user interface, it provides a smooth, h
 free experience for grocery shoppers and shopkeepers alike. The app is a simplistic
 approach to making grocery shopping intuitive and fun.
 # Logo :
-
+![](foodapp.png)
 # Development Tools :
 Platform - 
 Backend - 
