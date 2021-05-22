@@ -5,7 +5,7 @@ free experience for grocery shoppers and shopkeepers alike. The app is a simplis
 approach to making grocery shopping intuitive and fun.
 # Logo :
 <p align="center">
-  <img width="460" height="400" src="https://raw.githubusercontent.com/cavaliers25/FoodApp-Grocery-System/master/app/src/images/foodapp.png?token=AQS3LWCHM3F6PVCYRQXWA4LAU7HDG">
+  <img width="360" height="300" src="https://github.com/cavaliers25/FoodApp-Grocery-System/blob/master/app/src/images/foodapp.png">
 </p>
 
 # Development Tools :
