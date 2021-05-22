@@ -40,3 +40,6 @@ approach to making grocery shopping intuitive and fun.
 * [Anish Jain](https://github.com/anishjain18)   `(Developer)`
 * [Dhananjay](https://github.com/dhanan99)   `(Developer)`
 
+# Project Report:
+![Report](/app/src/images/project_report.pdf
+"Report")
